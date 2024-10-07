@@ -1,0 +1,3 @@
+This is a placeholder file to push empty folders to github
+Once each folder has a file of its own domain,
+these placeholders will be deleted
