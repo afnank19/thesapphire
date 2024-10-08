@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.lhs , .rhs {
+    border-radius: 20px;
+    padding: 30px 20px;
+}
+
+/* HomePageRHS */
+.bodyRHS {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.RHShdg {
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+.RHScards {
+    border: 2px solid rgb(166, 166, 166);
+    min-height: 400px;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+.inspirationHdg{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.inspirationQuote , .inspirationAuthor {
+    font-size: .9em;
+}
+.inspirationAuthor  {
+    color: gray;
+}
