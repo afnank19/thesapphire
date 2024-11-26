@@ -4,5 +4,6 @@
 
 /* Apply global dark styles here */
 body {
+  font-family: Helvetica; /* Temporary here */
   @apply bg-[#EEEEEE];
 }
