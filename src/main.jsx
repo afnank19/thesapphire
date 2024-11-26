@@ -3,26 +3,27 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import BlogPage from './pages/BlogPage.jsx';
+import Navbar from './components/shared/Navbar.jsx';
+import TempStarter from './pages/TempStarter.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
-  },
-  {
-    //Sir Husnains own route
-    path: '/H-dev-env',
-    element: (
-      <p>After you've created your page, please place it here in main.jsx</p>
-      // Example ->  element: <HomePage />
-    )
-  },
-  {
-    // Moeezs own route
-    path: '/M-dev-env',
-    element: (
-      <p>After you've created your page, please place it here in main.jsx</p>
-    )
+    element: <App />,
+    children: [
+      { index: true, element: <TempStarter /> }, // Homepage goes here
+      {
+        path: '/A-dev-env',
+        element: <ProfilePage />
+      },
+      { path: '/M-dev-env', element: <p>Why wont this work</p> },
+      {
+        path: '/H-dev-env',
+        element: <p>Place your page you are currently working on here</p>
+      }
+    ]
   }
 ]);
 
