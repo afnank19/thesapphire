@@ -1,13 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import BlogPage from './pages/BlogPage.jsx';
-import Navbar from './components/shared/Navbar.jsx';
+
+import App from './App.jsx';
 import TempStarter from './pages/TempStarter.jsx';
-import ProfilePage from './pages/ProfilePage.jsx';
 import HomePage from './pages/HomePage.jsx';
+import SearchPage from './pages/SearchPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <TempStarter /> }, // Homepage goes here
       {
         path: '/A-dev-env',
-        element: <HomePage />
+        element: <SearchPage />
       },
       { path: '/M-dev-env', element: <p>Why wont this work</p> },
       {
