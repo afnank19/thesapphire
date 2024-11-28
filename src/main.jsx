@@ -7,6 +7,7 @@ import BlogPage from './pages/BlogPage.jsx';
 import Navbar from './components/shared/Navbar.jsx';
 import TempStarter from './pages/TempStarter.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import HomePage from './pages/HomePage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       { index: true, element: <TempStarter /> }, // Homepage goes here
       {
         path: '/A-dev-env',
-        element: <ProfilePage />
+        element: <HomePage />
       },
       { path: '/M-dev-env', element: <p>Why wont this work</p> },
       {
