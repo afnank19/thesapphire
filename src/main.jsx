@@ -7,6 +7,7 @@ import App from './App.jsx';
 import TempStarter from './pages/TempStarter.jsx';
 import HomePage from './pages/HomePage.jsx';
 import SearchPage from './pages/SearchPage.jsx';
+import SignInPage from './pages/SignInPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       { index: true, element: <TempStarter /> }, // Homepage goes here
       {
         path: '/A-dev-env',
-        element: <SearchPage />
+        element: <SignInPage />
       },
       { path: '/M-dev-env', element: <p>Why wont this work</p> },
       {
