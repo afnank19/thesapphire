@@ -1,3 +1,4 @@
+import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 import { useRef } from 'react';
 
 // Must adjust the parent div size for overflow correction
@@ -21,7 +22,9 @@ const CategoyFilter = () => {
 
   return (
     <div className="flex gap-4 my-4 bg-[#EEEEEE]">
-      <button onClick={scrollLeft}>L</button>
+      <button onClick={scrollLeft} className="hover:opacity-100 opacity-70">
+        <CaretLeft size={'1.5rem'} />
+      </button>
       <div
         ref={scrollRef}
         className="flex gap-4 overflow-auto no-scrollbar scroll-smooth"
@@ -37,7 +40,9 @@ const CategoyFilter = () => {
         <p>Software</p>
         <p>Software</p>
       </div>
-      <button onClick={scrollRight}>R</button>
+      <button onClick={scrollRight} className="hover:opacity-100 opacity-70">
+        <CaretRight size={'1.5rem'} />
+      </button>
     </div>
   );
 };
