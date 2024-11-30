@@ -10,20 +10,24 @@ import HomePage from './pages/HomePage.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/home',
     element: <App />,
     children: [
       { index: true, element: <TempStarter /> }, // Homepage goes here
       {
-        path: '/A-dev-env',
+        path: '/home/A-dev-env',
         element: <HomePage />
       },
-      { path: '/M-dev-env', element: <p>Why wont this work</p> },
+      { path: '/home/M-dev-env', element: <p>Why wont this work</p> },
       {
-        path: '/H-dev-env',
+        path: '/home/H-dev-env',
         element: <p>Place your page you are currently working on here</p>
       }
     ]
+  },
+  {
+    path: '/test',
+    element: <SignUpPage />
   }
 ]);
 

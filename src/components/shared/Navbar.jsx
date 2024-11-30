@@ -1,6 +1,7 @@
 import { UserCircle } from '@phosphor-icons/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Dropdown from './Dropdown';
 
 const Navbar = () => {
   return (
@@ -37,9 +38,10 @@ const Navbar = () => {
           />
         </div>
         <Link>Write</Link>
-        <p>
+        <Dropdown />
+        {/* <p>
           <UserCircle size={'1.5rem'} />
-        </p>
+        </p> */}
       </div>
     </div>
   );

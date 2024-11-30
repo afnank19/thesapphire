@@ -16,10 +16,10 @@ const TempStarter = () => {
         <Link to={'/H-dev-env'} className="text-lime-800 mt-12">
           Sir Husnain
         </Link>
-        <Link to={'/M-dev-env'} className="text-purple-800">
+        <Link to={'/test'} className="text-purple-800">
           Moeez
         </Link>
-        <Link to={'/A-dev-env'}>Afnan</Link>{' '}
+        <Link to={'/home/A-dev-env'}>Afnan</Link>{' '}
       </div>
     </>
   );
