@@ -6,8 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import TempStarter from './pages/TempStarter.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
-import HomePage from './pages/HomePage.jsx';
-import SettingsPage from './pages/SettingsPage.jsx';
+import WritingPage from './pages/WritingPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <TempStarter /> }, // Homepage goes here
       {
         path: '/home/A-dev-env',
-        element: <SettingsPage />
+        element: <WritingPage />
       },
       { path: '/home/M-dev-env', element: <p>Why wont this work</p> },
       {
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/test',
-    element: <SignUpPage />
+    element: <WritingPage />
   }
 ]);
 
