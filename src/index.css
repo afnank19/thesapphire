@@ -19,3 +19,12 @@ body {
   font-family: Helvetica; /* Temporary here */
   @apply bg-[#EEEEEE];
 }
+
+.tiptap {
+  border-radius: 0.375rem;
+}
+
+.editor-container {
+  margin: 0.5rem;
+  @apply rounded-lg mt-8;
+}
