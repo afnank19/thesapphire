@@ -4,30 +4,76 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
-import TempStarter from './pages/TempStarter.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import WritingPage from './pages/WritingPage.jsx';
+import HomePage from './pages/HomePage.jsx';
+import SessionProvider from './components/shared/SessionProvider.jsx';
+import SignInPage from './pages/SignInPage.jsx';
+import AuthRedirection from './components/shared/AuthRedirection.jsx';
+import SearchPage from './pages/SearchPage';
+import BlogPage from './pages/BlogPage.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
+import SettingsPage from './pages/SettingsPage.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/home',
-    element: <App />,
+    path: '/',
+    element: (
+      <SessionProvider>
+        <App />
+      </SessionProvider>
+    ),
     children: [
-      { index: true, element: <TempStarter /> }, // Homepage goes here
+      { index: true, element: <HomePage /> }, // Homepage goes here
       {
-        path: '/home/A-dev-env',
-        element: <WritingPage />
+        path: '/search',
+        element: <SearchPage />
       },
-      { path: '/home/M-dev-env', element: <p>Why wont this work</p> },
       {
-        path: '/home/H-dev-env',
-        element: <p>Place your page you are currently working on here</p>
+        path: '/blog/:id',
+        element: <BlogPage />
+      },
+      {
+        path: '/profile/:id',
+        element: <ProfilePage />
+      },
+      {
+        path: '/settings',
+        element: <SettingsPage />
       }
     ]
   },
   {
-    path: '/test',
-    element: <WritingPage />
+    path: '/write',
+    element: (
+      <SessionProvider>
+        <WritingPage />
+      </SessionProvider>
+    )
+  },
+  {
+    path: '/app',
+    element: (
+      <SessionProvider>
+        <SignUpPage /> {/**Landing Page goes here */}
+      </SessionProvider>
+    )
+  },
+  {
+    path: '/signin',
+    element: (
+      <AuthRedirection>
+        <SignInPage />
+      </AuthRedirection>
+    )
+  },
+  {
+    path: '/signup',
+    element: (
+      <AuthRedirection>
+        <SignUpPage />
+      </AuthRedirection>
+    )
   }
 ]);
 

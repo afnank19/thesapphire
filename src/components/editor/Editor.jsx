@@ -6,7 +6,6 @@ const extensions = [StarterKit];
 const content = '<p>Start Typing here...</p>';
 
 const Editor = () => {
-  console.count('editor render');
   return (
     <div className="m-2 ">
       <EditorProvider

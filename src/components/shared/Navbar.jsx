@@ -37,7 +37,7 @@ const Navbar = () => {
             required
           />
         </div>
-        <Link>Write</Link>
+        <Link to={'/write'}>Write</Link>
         <Dropdown />
         {/* <p>
           <UserCircle size={'1.5rem'} />
