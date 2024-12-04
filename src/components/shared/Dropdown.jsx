@@ -22,7 +22,9 @@ const Dropdown = () => {
       </button>
       {isExpanded && (
         <div className="absolute bg-[#EEE] text-gray-500 rounded-lg px-4 py-1 right-0 w-52 flex flex-col gap-2 items-start mt-2 drop-shadow-md z-10 ">
-          <Link className="hover:text-black">Profile</Link>
+          <Link className="hover:text-black" to={'/profile/1'}>
+            Profile
+          </Link>
           <button className="flex items-center gap-2 text-sm">
             <SignOut />
             Sign out
