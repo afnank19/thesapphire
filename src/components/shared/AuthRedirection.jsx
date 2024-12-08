@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../services/state/authStore';
 
 const AuthRedirection = ({ children }) => {
-  const auth = true;
+  // const accessToken = useAuthStore((state) => state.accessToken);
+
+  let auth = false;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (auth) {
       navigate('/', { replace: true });
     }
-  }, [auth]);
+  }, [auth, navigate]);
 
   return children;
 };

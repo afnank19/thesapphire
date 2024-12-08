@@ -1,6 +1,7 @@
 import FeaturedPhoto from '../components/home/FeaturedPhoto';
 import HomeFeed from '../components/home/HomeFeed';
 import News from '../components/home/News';
+import { useAuthStore } from '../services/state/authStore';
 
 const HomePage = () => {
   return (
