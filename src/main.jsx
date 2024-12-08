@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import App from './App.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
@@ -61,11 +62,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/signin',
-    element: (
-      <AuthRedirection>
-        <SignInPage />
-      </AuthRedirection>
-    )
+    element: <SignInPage />
   },
   {
     path: '/signup',
@@ -77,8 +74,12 @@ const router = createBrowserRouter([
   }
 ]);
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </StrictMode>
 );

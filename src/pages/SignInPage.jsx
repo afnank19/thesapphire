@@ -9,7 +9,10 @@ const SignInPage = () => {
       <div className="flex-grow flex-col flex items-center justify-center w-full">
         <SignInForm />
         <p className="text-sm text-gray-700">
-          No account yet? <Link to={'/signup'}>Sign Up</Link>
+          No account yet?{' '}
+          <Link to={'/signup'} className="underline">
+            Sign Up
+          </Link>
         </p>
       </div>
     </div>
