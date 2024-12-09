@@ -1,9 +1,11 @@
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 // Must adjust the parent div size for overflow correction
 // If parent can grow, this will not overflow
-const CategoyFilter = () => {
+// IMP: Make sure no coupling with HomePage
+// Remove coupling, should be a standalone component
+const CategoyFilter = ({ activeCategory, setActiveCategory }) => {
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
@@ -12,13 +14,29 @@ const CategoyFilter = () => {
       behavior: 'smooth'
     });
   };
-
   const scrollRight = () => {
     scrollRef.current.scrollBy({
       left: 100,
       behavior: 'smooth'
     });
   };
+
+  // Move to a general constants file maybe?
+  const categories = [
+    'Latest',
+    'Software',
+    'Design',
+    'Art',
+    'Education',
+    'Science',
+    'Entertainment',
+    'Other'
+  ];
+
+  // Temporarily here, delete soon
+  useEffect(() => {
+    console.log(activeCategory);
+  }, [activeCategory]);
 
   return (
     <div className="flex gap-4 my-4 bg-[#EEEEEE]">
@@ -29,16 +47,23 @@ const CategoyFilter = () => {
         ref={scrollRef}
         className="flex gap-4 overflow-auto no-scrollbar scroll-smooth"
       >
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
-        <p>Software</p>
+        {categories.map((category) => {
+          return (
+            <button
+              key={category}
+              onClick={() => {
+                setActiveCategory(category);
+              }}
+              className={
+                activeCategory === category
+                  ? 'pb-1 border-b border-black'
+                  : 'pb-1 text-gray-600'
+              }
+            >
+              {category}
+            </button>
+          );
+        })}
       </div>
       <button onClick={scrollRight} className="hover:opacity-100 opacity-70">
         <CaretRight size={'1.5rem'} />
