@@ -1,9 +1,18 @@
-import { UserCircle } from '@phosphor-icons/react';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && searchTerm.trim() != '') {
+      const encodedURI = encodeURIComponent(searchTerm.trim());
+      navigate(`/search?q=${encodedURI}`);
+    }
+  };
+
   return (
     <div className="flex justify-between border-b-2 py-1 px-3">
       <Link to={'/'} className="font-serif text-2xl">
@@ -35,6 +44,11 @@ const Navbar = () => {
             className="block w-full p-2 ps-10 text-sm text-gray-900 border rounded-lg bg-[#E1E1E1] focus:ring-blue-500 focus:border-blue-500 "
             placeholder="Search"
             required
+            onKeyDown={handleKeyDown}
+            onChange={(e) => {
+              // setSearchQuery(e.target.value);
+              setSearchTerm(e.target.value);
+            }}
           />
         </div>
         <Link to={'/write'}>Write</Link>

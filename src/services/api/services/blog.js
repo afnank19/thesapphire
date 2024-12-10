@@ -1,11 +1,12 @@
+import { useLocation } from 'react-router-dom';
 import { useCategoryStore } from '../../state/category';
+import { useQueryStore } from '../../state/queryStore';
 import { authInstance } from '../axios';
 
 // In the current state, this only works for the homefeed,
 // but it could be generalised to work for all blog requests,
 // which contains lastDocId (cursor), search term, and filter/category
 export const fetchBlogs = async ({ pageParam }) => {
-  console.log(pageParam);
   let endpoint = '/blogs?';
 
   let parameters;
@@ -20,8 +21,12 @@ export const fetchBlogs = async ({ pageParam }) => {
     console.log('New categories');
   }
 
-  console.log(endpoint);
-  console.log(parameters.toString());
+  if (useQueryStore.getState().searchQuery != '') {
+    parameters.set('search', useQueryStore.getState().searchQuery);
+  }
+
+  console.log(pageParam);
+  console.log('HITTING: ' + endpoint + parameters.toString());
   const response = await authInstance.get(endpoint + parameters.toString());
 
   console.log(response.data);
