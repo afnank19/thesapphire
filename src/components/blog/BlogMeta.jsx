@@ -1,14 +1,14 @@
 import React from 'react';
 
-const BlogMeta = () => {
+const BlogMeta = ({ blogMeta }) => {
   return (
     <div className="flex flex-col items-center gap-1 p-2 mt-6">
       <div className="w-full">
-        <p className="text-sm">Afnan Khalid</p>
-        <h1 className="font-bold text-3xl">Writing a TUI in GO!</h1>
+        <p className="text-sm">{blogMeta?.author}</p>
+        <h1 className="font-bold text-3xl">{blogMeta?.title}</h1>
         <div className="flex justify-between text-sm text-[#838383]">
-          <p>5 min read</p>
-          <p>26 November 2024</p>
+          <p>{blogMeta.timeToRead} read</p>
+          <p>{blogMeta.postDate}</p>
         </div>
       </div>
       <img
