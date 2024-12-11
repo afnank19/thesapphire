@@ -1,37 +1,90 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
 import BlogList from '../shared/BlogList';
 import CategoyFilter from '../shared/CategoyFilter';
 import SectionHeader from '../ui/SectionHeader';
 import { fetchBlogs } from '../../services/api/services/blog';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useCategoryStore } from '../../services/state/category';
+import { useFetchBlogs } from '../../hooks/useFetchBlogs.js';
 
+// TODO: useInfiniteQuery could be improved
 const HomeFeed = () => {
-  const searchTerm = 'Vercel';
+  // The current impl of state is not fun, because we have local state
+  // and global state, this needs to be re done
+  // const [activeCategory, setActiveCategory] = useState('Latest');
+  const activeCategory = useCategoryStore((state) => state.activeCategory);
+  const setActiveCtgry = useCategoryStore((state) => state.setActiveCtgry);
 
-  const { data, error, status, fetchNextPage } = useInfiniteQuery({
-    queryKey: ['homeblogs', searchTerm],
-    queryFn: fetchBlogs,
-    initialPageParam: { id: undefined, term: searchTerm },
-    getNextPageParam: (lastPage) => {
-      // console.log('GNPP');
-      // console.log(lastPage[lastPage.length - 1].id);
+  const queryClient = useQueryClient();
 
-      return { id: lastPage[lastPage.length - 1].id, term: searchTerm };
-    }
-  });
+  const {
+    data,
+    error,
+    status,
+    isFetching,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage
+  } = useFetchBlogs('homeblogs', fetchBlogs);
 
+  // TODO: Maybe create a custom hook for this
+  // Keeping this here for now incase something goes wrong
+  // const {
+  //   data,
+  //   error,
+  //   status,
+  //   fetchNextPage,
+  //   isFetchingNextPage,
+  //   hasNextPage
+  // } = useInfiniteQuery({
+  //   queryKey: ['homeblogs'],
+  //   queryFn: fetchBlogs,
+  //   initialPageParam: undefined,
+  //   getNextPageParam: (lastPage) => {
+  //     if (lastPage.length === 0) {
+  //       return null;
+  //     }
+
+  //     return lastPage[lastPage.length - 1].id;
+  //   }
+  // });
+  const invalidateQueries = () => {
+    queryClient.invalidateQueries({ queryKey: ['homeblogs'] });
+  };
+
+  useEffect(() => {
+    return () => {
+      setActiveCtgry('Latest');
+    };
+  }, []);
+
+  // Clean up JSX
   return (
     <div>
       <SectionHeader headingText={'Student Blogs'} />
-      {/* <CategoyFilter /> */}
       <div className="sticky top-0">
-        <CategoyFilter />
+        <CategoyFilter
+          activeCategory={activeCategory}
+          setActiveCtgry={setActiveCtgry}
+          invalidateQueries={invalidateQueries}
+        />
       </div>
-      <BlogList />
-      <button className="bg-black text-white" onClick={fetchNextPage}>
-        {' '}
-        Load More
-      </button>
+      {status === 'pending' ? (
+        <div className="flex items-center justify-center"> Loading... </div>
+      ) : status === 'error' ? (
+        <div>We're having trouble</div>
+      ) : (
+        <>
+          <BlogList pages={data?.pages} />
+          <button
+            className="text-green-600 hover:text-green-500 border border-green-600 rounded-2xl text-sm px-4 py-1"
+            onClick={fetchNextPage}
+            disabled={isFetchingNextPage || !hasNextPage}
+          >
+            Load More
+          </button>
+        </>
+      )}
     </div>
   );
 };
