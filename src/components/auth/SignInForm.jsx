@@ -10,40 +10,16 @@ const SignInForm = () => {
   const [password, setPassword] = useState('');
 
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
-  // const accessToken = useAuthStore((state) => state.accessToken);
+  const setUserId = useAuthStore((state) => state.setUserId);
 
   const navigate = useNavigate();
-
-  // const { data, error, isError, isPending } = useQuery({
-  //   queryKey: ['user'],
-  //   queryFn: async () => {
-  //     const res = await authInstance.get('/users/jkWnP3r2v8D78xuv18q3');
-
-  //     console.log(res.data);
-  //     return res.data;
-  //   },
-  //   retry: (failureCount, error) => {
-  //     console.log(failureCount);
-  //     if (failureCount === 0) {
-  //       return false;
-  //     }
-
-  //     console.log(error.response.data.message);
-  //     if (error.response.data.message === 'Expired crendentials') {
-  //       console.log('refresh the token here, and retry the request');
-  //       // Refresh logic here
-  //       return true;
-  //     }
-
-  //     return false;
-  //   }
-  // });
 
   const mutation = useMutation({
     mutationFn: (data) => signIn(data),
     onSuccess: (data) => {
       console.log(data);
       setAccessToken(data.aTkn);
+      setUserId(data.id);
       navigate('/', { replace: true });
     },
     onError: (error) => {
