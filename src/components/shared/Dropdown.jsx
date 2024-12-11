@@ -1,6 +1,7 @@
 import { SignOut, UserCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuthStore } from '../../services/state/authStore';
 
 // NOTE: This component is put in the shared folder
 // Although this is not reuseable, it could be made reuseable
@@ -22,7 +23,10 @@ const Dropdown = () => {
       </button>
       {isExpanded && (
         <div className="absolute bg-[#EEE] text-gray-500 rounded-lg px-4 py-1 right-0 w-52 flex flex-col gap-2 items-start mt-2 drop-shadow-md z-10 ">
-          <Link className="hover:text-black" to={'/profile/1'}>
+          <Link
+            className="hover:text-black"
+            to={`/profile/${useAuthStore.getState().id}`}
+          >
             Profile
           </Link>
           <button className="flex items-center gap-2 text-sm">

@@ -11,6 +11,7 @@ const SessionProvider = ({ children }) => {
   const navigate = useNavigate();
   const accessToken = useAuthStore.getState().accessToken;
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
+  const setUserId = useAuthStore((state) => state.setUserId);
 
   const { data, error, isPending, isError, isSuccess, isFetching } = useQuery({
     queryKey: ['accessToken'],
@@ -27,6 +28,7 @@ const SessionProvider = ({ children }) => {
     if (isSuccess) {
       console.log(data);
       setAccessToken(data.aTkn);
+      setUserId(data.id);
     }
   }, [isError, isSuccess]);
 

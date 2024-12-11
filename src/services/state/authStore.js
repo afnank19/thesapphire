@@ -2,5 +2,7 @@ import { create } from 'zustand';
 
 export const useAuthStore = create((set) => ({
   accessToken: '',
-  setAccessToken: (newAccessToken) => set({ accessToken: newAccessToken })
+  id: '',
+  setAccessToken: (newAccessToken) => set({ accessToken: newAccessToken }),
+  setUserId: (newId) => set({ id: newId })
 }));
