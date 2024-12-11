@@ -32,3 +32,11 @@ export const fetchBlogs = async ({ pageParam }) => {
   console.log(response.data);
   return response.data;
 };
+
+export const fetchABlogById = async (blogId) => {
+  // console.log(blogId);
+  const response = await authInstance.get(`/blogs/${blogId}`);
+
+  // console.log(response.data);
+  return response.data;
+};
