@@ -23,6 +23,9 @@ const EditorNav = ({ editor }) => {
     if (categoryRef.current.value === '') {
       alert('Please choose a tag!');
     }
+    // Get time to read
+    // create teaser using substring
+    // mutation
   };
 
   return (
