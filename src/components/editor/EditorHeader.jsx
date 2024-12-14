@@ -7,7 +7,7 @@ const EditorHeader = () => {
 
   return (
     <>
-      <EditorNav />
+      <EditorNav editor={editor} />
       <MenuBar editor={editor} />
     </>
   );
