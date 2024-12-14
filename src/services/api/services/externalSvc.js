@@ -12,15 +12,14 @@ export const getNews = async () => {
   return response.data;
 };
 
+// Temporarily here, the env var, probably should convert it to use
+// the backend
 export const getImages = async (query) => {
-  console.log(query);
-
   const response = await axios.get(
     `https://api.pexels.com/v1/search?query=${query}&per_page=9&orientation=landscape`,
     {
       headers: {
-        Authorization:
-          'qwn3SNRa6SQStwEY8zHoVrWUkkJwNcBAbfFhlw8AmEpfs8EMVTuygYIL'
+        Authorization: import.meta.env.VITE_PEXELS_KEY
       }
     }
   );
