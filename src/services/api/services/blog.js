@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useAuthStore } from '../../state/authStore';
 import { useCategoryStore } from '../../state/category';
 import { useQueryStore } from '../../state/queryStore';
 import { authInstance } from '../axios';
@@ -39,4 +39,15 @@ export const fetchABlogById = async (blogId) => {
 
   // console.log(response.data);
   return response.data;
+};
+
+export const postABlog = async (blog) => {
+  const authorId = useAuthStore.getState().id;
+  // console.log(authorId);
+  blog = { authorId: authorId, ...blog };
+  console.log(blog);
+
+  const response = await authInstance.post('/blogs', blog);
+
+  return response;
 };
