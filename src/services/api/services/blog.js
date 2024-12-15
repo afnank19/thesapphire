@@ -18,7 +18,6 @@ export const fetchBlogs = async ({ pageParam }) => {
 
   if (useCategoryStore.getState().activeCategory != 'Latest') {
     parameters.set('filter', useCategoryStore.getState().activeCategory);
-    console.log('New categories');
   }
 
   if (useQueryStore.getState().searchQuery != '') {
