@@ -1,8 +1,13 @@
 import { EditorProvider } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import EditorHeader from './EditorHeader';
+import CharacterCount from '@tiptap/extension-character-count';
 
-const extensions = [StarterKit];
+import EditorHeader from './EditorHeader';
+import EditorFooter from './EditorFooter';
+
+const limit = 10000;
+
+const extensions = [StarterKit, CharacterCount.configure({ limit: limit })];
 const content = '<p>Start Typing here...</p>';
 
 const Editor = () => {
@@ -12,6 +17,7 @@ const Editor = () => {
         extensions={extensions}
         content={content}
         slotBefore={<EditorHeader />}
+        slotAfter={<EditorFooter limit={limit} />}
         editorContainerProps={{ className: 'editor-container' }}
         editorProps={{
           attributes: {
