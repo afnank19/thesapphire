@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { NotePencil } from '@phosphor-icons/react';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -51,7 +52,10 @@ const Navbar = () => {
             }}
           />
         </div>
-        <Link to={'/write'}>Write</Link>
+        <Link to={'/write'} className="flex items-center gap-2 hover:underline">
+          <NotePencil size={'1.5rem'} />
+          Write
+        </Link>
         <Dropdown />
         {/* <p>
           <UserCircle size={'1.5rem'} />
