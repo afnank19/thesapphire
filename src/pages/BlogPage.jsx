@@ -23,7 +23,7 @@ const BlogPage = () => {
   return (
     <div className="flex flex-col items-center w-full">
       {/* <Navbar /> to be made, but it doesn't go here*/}
-      <div className="max-w-3xl p-2">
+      <div className="max-w-3xl w-full p-2">
         {isPending ? (
           <Loader />
         ) : isError ? (
@@ -32,7 +32,7 @@ const BlogPage = () => {
           <>
             <BlogMeta blogMeta={data} />
             <BlogContent content={data.content} />
-            <BlogFooter />
+            {/* <BlogFooter /> */}
           </>
         )}
       </div>
