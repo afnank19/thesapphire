@@ -8,7 +8,8 @@ export default {
         crimson: ['Crimson Text', 'serif'],
         manrope: ['Manrope', 'sans-serif'],
         geist: ['Geist', 'sans-serif'],
-        spectral: ['Spectral', 'serif']
+        spectral: ['Spectral', 'serif'],
+        news: ['Newsreader', 'serif']
       }
     }
   },

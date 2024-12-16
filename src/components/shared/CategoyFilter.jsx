@@ -59,7 +59,7 @@ const CategoyFilter = ({
               className={
                 cat === category
                   ? 'pb-1 border-b border-black'
-                  : 'pb-1 text-gray-600'
+                  : 'pb-1 text-gray-600 hover:text-black'
               }
             >
               {category}

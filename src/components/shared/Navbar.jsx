@@ -15,8 +15,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between border-b-2 py-1 px-3">
-      <Link to={'/'} className="font-spectral text-2xl">
+    <div className="flex items-center justify-between border-b-2 py-1 px-3">
+      <Link
+        to={'/'}
+        className="font-news text-2xl hover:text-blue-800 transition-colors"
+      >
         The Nust Sapphire
       </Link>
       <div className="flex gap-4 items-center">

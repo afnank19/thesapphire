@@ -31,7 +31,7 @@ authInstance.interceptors.response.use(
   },
   async (error) => {
     console.log(error.response.status);
-    console.log(error.response.message);
+    console.log(error.response.data.message);
     const originalRequest = error.config;
 
     if (error.response.status === 401 && !originalRequest._retry) {
