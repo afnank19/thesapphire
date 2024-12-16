@@ -14,9 +14,9 @@ const NewsList = ({ data }) => {
           />
         );
       })}
-      <div className="flex text-sm text-gray-500 items-center gap-2">
-        <NyTimesLogo size={'1.5rem'} />
+      <div className="flex justify-between text-sm text-gray-500 items-center gap-2">
         <p>Powered by New York Times</p>
+        <NyTimesLogo size={'1.5rem'} />
       </div>
     </div>
   );

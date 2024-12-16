@@ -2,7 +2,7 @@ const NewsCard = ({ title, abstract, url }) => {
   return (
     <div>
       <a
-        className="font-serif mb-2 text-lg hover:underline"
+        className="font-news   mb-2 text-lg hover:underline"
         href={url}
         target="_blank"
         rel="noopener noreferrer"

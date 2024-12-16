@@ -78,7 +78,7 @@ const EditorNav = ({ editor }) => {
     <div className="flex flex-col mb-4 p-2">
       <Toaster position="bottom-left" richColors />
       <div className="flex justify-between">
-        <h3 className="text-xl font-serif">The Sapphire Editor</h3>
+        <h3 className="text-xl font-news">The Sapphire Editor</h3>
         <div className="flex gap-2">
           <button className="text-green-600 hover:text-green-500 border border-green-600 rounded-2xl text-sm px-4 py-1">
             Save Draft
