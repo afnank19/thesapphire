@@ -29,15 +29,22 @@ authInstance.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => {
+  async (error) => {
     console.log(error.response.status);
+    console.log(error.response.message);
     const originalRequest = error.config;
 
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
-      console.log('Fetch new tokens here');
+      const response = await refreshInstance.get('/session/token', {
+        withCredentials: true
+      });
 
+      const { setAccessToken } = useAuthStore.getState();
+      setAccessToken(response.data.aTkn);
+
+      originalRequest.headers.Authorization = `Bearer ${response.data.aTkn}`;
       return authInstance(originalRequest);
     }
 
@@ -49,5 +56,13 @@ export const noAuthInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json'
+  }
+});
+
+const refreshInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+    'X-SURF': 'okl'
   }
 });
