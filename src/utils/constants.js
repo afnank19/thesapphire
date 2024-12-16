@@ -14,3 +14,5 @@ export const BLOG_CATEGORIES = [
   'Interests',
   'Other'
 ];
+
+export const DEFAULT_ERR_MESSAGE = 'Oops! An error occurred.';

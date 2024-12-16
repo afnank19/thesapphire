@@ -1,9 +1,15 @@
 import { useRef, useState } from 'react';
 import ImageModal from '../shared/ImageModal';
-import { calculateTimeToRead, createTeaser } from '../../utils/helpers';
+import {
+  calculateTimeToRead,
+  createTeaser,
+  sanitizeHTML
+} from '../../utils/helpers';
 import { useMutation } from '@tanstack/react-query';
 import { postABlog } from '../../services/api/services/blog';
 import { toast, Toaster } from 'sonner';
+
+import DOMPurify from 'dompurify';
 
 const EditorNav = ({ editor }) => {
   const [image, setImage] = useState('');
@@ -47,6 +53,12 @@ const EditorNav = ({ editor }) => {
       return;
     }
 
+    if (image === '') {
+      toast.warning('Please select a cover image');
+      return;
+    }
+
+    const content = DOMPurify.sanitize(editor.getHTML());
     // console.log(new Date(Date.now()).toDateString());
     const blog = {
       timeToRead: timeToRead,
@@ -54,7 +66,7 @@ const EditorNav = ({ editor }) => {
       imgUrl: image,
       teaser: createTeaser(editor.getText()),
       tag: categoryRef.current.value,
-      content: editor.getHTML(),
+      content: content,
       displayDate: Date.now()
     };
 

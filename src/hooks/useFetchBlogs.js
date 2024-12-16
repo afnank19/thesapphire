@@ -5,7 +5,8 @@ export const useFetchBlogs = (queryKey, queryFn) => {
     queryKey: [queryKey],
     queryFn: queryFn,
     initialPageParam: undefined,
-    refetchOnMount: false,
+    staleTime: 1000 * 60 * 5,
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
     getNextPageParam: (lastPage) => {
       if (lastPage.length === 0) {

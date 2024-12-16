@@ -1,3 +1,4 @@
+import { NyTimesLogo } from '@phosphor-icons/react';
 import NewsCard from '../shared/NewsCard';
 
 const NewsList = ({ data }) => {
@@ -13,6 +14,10 @@ const NewsList = ({ data }) => {
           />
         );
       })}
+      <div className="flex text-sm text-gray-500 items-center gap-2">
+        <NyTimesLogo size={'1.5rem'} />
+        <p>Powered by New York Times</p>
+      </div>
     </div>
   );
 };
