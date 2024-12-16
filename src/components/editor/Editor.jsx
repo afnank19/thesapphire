@@ -21,7 +21,8 @@ const Editor = () => {
         editorContainerProps={{ className: 'editor-container' }}
         editorProps={{
           attributes: {
-            class: 'prose prose-base max-w-none  m-1 focus:outline-none'
+            class:
+              'prose prose-xl font-crimson max-w-none  m-1 focus:outline-none'
           }
         }}
       ></EditorProvider>
