@@ -12,18 +12,12 @@ export const getNews = async () => {
   return response.data;
 };
 
-// Temporarily here, the env var, probably should convert it to use
-// the backend
+// This works locally
 export const getImages = async (query) => {
-  const response = await axios.get(
-    `https://api.pexels.com/v1/search?query=${query}&per_page=9&orientation=landscape`,
-    {
-      headers: {
-        Authorization: import.meta.env.VITE_PEXELS_KEY
-      }
-    }
+  const response = await authInstance.get(
+    `/external-services/pexels/search?query=${query}`
   );
 
-  console.log(response.data.photos);
-  return response.data.photos;
+  console.log(response.data);
+  return response.data;
 };
