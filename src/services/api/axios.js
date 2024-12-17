@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useAuthStore } from '../state/authStore';
 
-const BASE_URL = 'http://localhost:8081/api';
+const BASE_URL = 'https://smiling-kerstin-afnan-we-2f62af17.koyeb.app/api';
 
 export const authInstance = axios.create({
   baseURL: BASE_URL,
