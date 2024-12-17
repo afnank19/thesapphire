@@ -10,6 +10,7 @@ import { postABlog } from '../../services/api/services/blog';
 import { toast, Toaster } from 'sonner';
 
 import DOMPurify from 'dompurify';
+import { useNavigate } from 'react-router-dom';
 
 const EditorNav = ({ editor }) => {
   const [image, setImage] = useState('');
@@ -18,6 +19,7 @@ const EditorNav = ({ editor }) => {
   const titleInputRef = useRef();
   const categoryRef = useRef();
 
+  const navigate = useNavigate();
   // author x
   // postDate in HP
   // timeToRead in HP [X]
@@ -32,6 +34,7 @@ const EditorNav = ({ editor }) => {
     mutationFn: (data) => postABlog(data),
     onSuccess: (data) => {
       toast.success('Successfully Posted');
+      navigate('/');
     },
     onError: (error) => {
       toast.error('Something went wrong :(');
