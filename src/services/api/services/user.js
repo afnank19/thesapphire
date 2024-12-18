@@ -1,3 +1,4 @@
+import { useAuthStore } from '../../state/authStore';
 import { authInstance, noAuthInstance } from '../axios';
 
 export const fetchUserProfile = async (id) => {
@@ -24,5 +25,16 @@ export const registerUser = async ({ name, email, password, cms, campus }) => {
   );
 
   console.log(response.data);
+  return response.data;
+};
+
+// This works in DEV, update prod for it to work
+export const updateUserAbout = async ({ newAbout }) => {
+  const id = useAuthStore.getState().id;
+
+  const response = await authInstance.patch(`/users/${id}/about`, {
+    about: newAbout
+  });
+
   return response.data;
 };
