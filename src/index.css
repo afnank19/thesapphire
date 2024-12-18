@@ -23,7 +23,7 @@
 
 /* Apply global dark styles here */
 body {
-  @apply bg-[#EEEEEE] font-geist;
+  @apply bg-[#EEEEEE] font-geist dark:bg-[#141414] dark:text-[#f3f3f3];
 }
 
 .tiptap {

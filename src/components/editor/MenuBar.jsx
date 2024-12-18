@@ -14,10 +14,12 @@ const MenuBar = ({ editor }) => {
   //const { editor } = useCurrentEditor();
 
   return (
-    <div className="flex flex-wrap justify-between gap-2 border-b border-gray-300 p-4">
+    <div className="flex flex-wrap sm:justify-between justify-evenly gap-2 border-b border-gray-300 dark:border-[#3b3b3b] p-4">
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('bold') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('bold')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleBold().run();
@@ -27,7 +29,9 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('italic') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('italic')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleItalic().run();
@@ -38,7 +42,9 @@ const MenuBar = ({ editor }) => {
 
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('strike') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('strike')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleStrike().run();
@@ -48,7 +54,9 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('blockQuote') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('blockQuote')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleBlockquote().run();
@@ -58,7 +66,9 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('orderedlist') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('orderedlist')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleOrderedList().run();
@@ -68,7 +78,9 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('bulletList') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('bulletList')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleBulletList().run();
@@ -78,7 +90,9 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('code') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('code')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleCode().run();
@@ -88,7 +102,9 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         className={`p-1 rounded-lg ${
-          editor.isActive('codeBlock') ? 'bg-gray-300' : 'bg-gray-200'
+          editor.isActive('codeBlock')
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleCodeBlock().run();
@@ -100,8 +116,8 @@ const MenuBar = ({ editor }) => {
       <button
         className={`p-1 rounded-lg ${
           editor.isActive('heading', { level: 1 })
-            ? 'bg-gray-300'
-            : 'bg-gray-200'
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleHeading({ level: 1 }).run();
@@ -112,8 +128,8 @@ const MenuBar = ({ editor }) => {
       <button
         className={`p-1 rounded-lg ${
           editor.isActive('heading', { level: 2 })
-            ? 'bg-gray-300'
-            : 'bg-gray-200'
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleHeading({ level: 2 }).run();
@@ -124,8 +140,8 @@ const MenuBar = ({ editor }) => {
       <button
         className={`p-1 rounded-lg ${
           editor.isActive('heading', { level: 3 })
-            ? 'bg-gray-300'
-            : 'bg-gray-200'
+            ? 'bg-gray-300 dark:bg-[#323232]'
+            : 'bg-gray-200 dark:bg-[#1f1f1f]'
         }`}
         onClick={() => {
           editor.chain().focus().toggleHeading({ level: 3 }).run();

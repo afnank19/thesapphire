@@ -8,7 +8,7 @@ const SignInPage = () => {
       <h1 className="text-2xl font-serif ">The Nust Sapphire</h1>
       <div className="flex-grow flex-col flex items-center justify-center w-full">
         <SignInForm />
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-700 dark:text-[#7D7D7D]">
           No account yet?{' '}
           <Link to={'/signup'} className="underline">
             Sign Up

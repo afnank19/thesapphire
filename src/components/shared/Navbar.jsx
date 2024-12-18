@@ -15,10 +15,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between border-b-2 py-1 px-3">
+    <div className="flex items-center justify-between border-b dark:dark:border-[#3b3b3b]  py-1 px-3">
       <Link
         to={'/'}
-        className="font-news text-2xl hover:text-blue-800 transition-colors"
+        className="font-news text-2xl hover:text-blue-800 transition-colors dark:hover:text-blue-300"
       >
         The Nust Sapphire
       </Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
           <input
             type="search"
             id="default-search"
-            className="block w-full p-2 ps-10 text-sm text-gray-900 border rounded-lg bg-[#E1E1E1] focus:ring-blue-500 focus:border-blue-500 "
+            className="block w-full p-2 ps-10 text-sm text-gray-900 border rounded-lg bg-[#E1E1E1] dark:bg-[#191919] dark:border-[#191919] dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500 "
             placeholder="Search"
             required
             onKeyDown={handleKeyDown}
@@ -57,7 +57,7 @@ const Navbar = () => {
         </div>
         <Link to={'/write'} className="flex items-center gap-2 hover:underline">
           <NotePencil size={'1.5rem'} />
-          Write
+          <span className="sm:block hidden">Write</span>
         </Link>
         <Dropdown />
         {/* <p>

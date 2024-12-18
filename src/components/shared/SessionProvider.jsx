@@ -27,7 +27,7 @@ const SessionProvider = ({ children }) => {
     }
 
     if (isSuccess) {
-      console.log(data);
+      // console.log(data);
       setAccessToken(data.aTkn);
       setUserId(data.id);
     }
