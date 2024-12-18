@@ -1,9 +1,13 @@
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/shared/Navbar';
+
 function App() {
   return (
     <>
-      <div className="container mx-auto text-center">
-        <p className="text-3xl underline">Aces</p>
-      </div>
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }
