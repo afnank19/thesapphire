@@ -9,7 +9,7 @@ const NewsCard = ({ title, abstract, url }) => {
       >
         {title}
       </a>
-      <p className="text-sm text-[#555555] pb-4 mb-3 border-b-2 border-gray-300">
+      <p className="text-sm text-[#555555] pb-4 mb-3 border-b border-gray-300 dark:border-gray-700">
         {abstract}
       </p>
     </div>

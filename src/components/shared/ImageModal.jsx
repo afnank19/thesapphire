@@ -24,7 +24,7 @@ const ImageModal = ({ setOpen, setImage }) => {
 
   return (
     <div className="w-full h-full bg-black/20 absolute top-0 left-0 flex items-center justify-center z-10">
-      <div className="bg-gray-100 rounded-3xl p-4 max-w-2xl w-full flex flex-col gap-4 h-2/3">
+      <div className="bg-gray-100 rounded-3xl p-4 m-2 max-w-2xl w-full flex flex-col gap-4 h-2/3">
         <div className="flex justify-between">
           <p className=" text-xl">Select a cover image</p>
           <button

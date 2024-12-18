@@ -7,7 +7,7 @@ const BlogContent = ({ content }) => {
       {/* <p className="text-lg ">{content}</p> */}
       <div
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
-        className="prose prose-xl font-news"
+        className="prose prose-xl font-news dark:prose-invert"
       ></div>
     </div>
   );
