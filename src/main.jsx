@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
@@ -15,7 +16,8 @@ import SearchPage from './pages/SearchPage';
 import BlogPage from './pages/BlogPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import SettingsPage from './pages/SettingsPage.jsx';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import BrandLoader from './components/ui/BrandLoader.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
         <SignUpPage />
       </AuthRedirection>
     )
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ]);
 
