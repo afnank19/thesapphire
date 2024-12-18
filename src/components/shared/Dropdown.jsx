@@ -22,15 +22,18 @@ const Dropdown = () => {
         <UserCircle size={'1.5rem'} />
       </button>
       {isExpanded && (
-        <div className="absolute bg-[#EEE] text-gray-500 rounded-lg px-4 py-1 right-0 w-52 flex flex-col gap-2 items-start mt-2 drop-shadow-md z-10 ">
+        <div className="absolute bg-[#EEE] dark:bg-[#191919] text-gray-500 rounded-lg px-4 py-1 right-0 w-52 flex flex-col gap-2 items-start mt-2 drop-shadow-md z-10 ">
           <div className="flex flex-col">
             <Link
-              className="hover:text-black"
+              className="hover:text-black dark:hover:text-white"
               to={`/profile/${useAuthStore.getState().id}`}
             >
               Profile
             </Link>
-            <Link className="hover:text-black" to={'/settings'}>
+            <Link
+              className="hover:text-black dark:hover:text-white"
+              to={'/settings'}
+            >
               Settings
             </Link>
           </div>

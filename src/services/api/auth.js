@@ -1,8 +1,6 @@
 import { noAuthInstance } from './axios';
 
 export const signIn = async ({ email, password }) => {
-  console.log(password);
-
   const response = await noAuthInstance.post(
     '/session',
     {
@@ -18,8 +16,6 @@ export const signIn = async ({ email, password }) => {
 };
 
 export const getSession = async () => {
-  console.log('Attempting to get session');
-
   const response = await noAuthInstance.get('/session', {
     withCredentials: true,
     headers: {

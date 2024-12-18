@@ -3,7 +3,7 @@ import NewsCard from '../shared/NewsCard';
 
 const NewsList = ({ data }) => {
   return (
-    <div className="rounded-lg p-4 bg-[#E7E7E7]">
+    <div className="rounded-lg p-4 bg-[#E7E7E7] dark:bg-[#191919]">
       {data.news.map((newsItem, i) => {
         return (
           <NewsCard

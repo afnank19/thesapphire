@@ -62,7 +62,7 @@ const SignInForm = () => {
         ></input>
       </div>
       <button
-        className="bg-slate-50 w-full rounded-xl text-sm py-1"
+        className="bg-slate-50 w-full rounded-xl text-sm py-1 dark:text-black"
         onClick={handleSignIn}
         disabled={mutation.isPending ? true : false}
       >

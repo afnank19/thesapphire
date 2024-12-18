@@ -8,7 +8,7 @@ import {
 import { useMutation } from '@tanstack/react-query';
 import { postABlog } from '../../services/api/services/blog';
 import { toast, Toaster } from 'sonner';
-
+import { BLOG_CATEGORIES } from '../../utils/constants';
 import DOMPurify from 'dompurify';
 import { useNavigate } from 'react-router-dom';
 
@@ -43,7 +43,7 @@ const EditorNav = ({ editor }) => {
 
   const handlePublish = () => {
     if (categoryRef.current.value === '') {
-      toast.warning('Please choose a category!');
+      toast.warning('Please choose a tag!');
       return;
     }
 
@@ -83,12 +83,12 @@ const EditorNav = ({ editor }) => {
       <div className="flex justify-between">
         <h3 className="text-xl font-news">The Sapphire Editor</h3>
         <div className="flex gap-2">
-          <button className="text-green-600 hover:text-green-500 border border-green-600 rounded-2xl text-sm px-4 py-1">
+          {/* <button className="text-green-600 hover:text-green-500 border border-green-600 rounded-2xl text-sm px-4 py-1">
             Save Draft
-          </button>
+          </button> */}
           <button
             disabled={mutation.isPending ? true : false}
-            className="bg-green-600 hover:bg-green-500 text-white rounded-2xl text-sm px-4 py-1"
+            className="bg-green-600 hover:bg-green-500 text-white rounded-2xl text-sm h-max px-4 py-1"
             onClick={handlePublish}
           >
             {mutation.isPending ? 'Publishing' : 'Publish'}
@@ -96,16 +96,18 @@ const EditorNav = ({ editor }) => {
         </div>
       </div>
       {/* Blog Meta Data Form */}
-      <label className="text-xl text-gray-800 mt-8 mb-2">Title</label>
+      <label className="text-xl text-gray-800 mt-8 mb-2 dark:text-[#f3f3f3]">
+        Title
+      </label>
       <input
         maxLength={70}
         ref={titleInputRef}
-        className="bg-[#EAEAEA] border border-gray-300 rounded-lg p-1 text-lg font-bold text-black focus:border-gray-400 outline-none"
+        className="bg-[#EAEAEA] border border-gray-300 dark:bg-[#191919] dark:border-[#3b3b3b] dark:text-[#F3f3f3] rounded-lg p-1 text-lg font-bold text-black focus:border-gray-400 outline-none"
         placeholder="eg. The cats of NUST"
       ></input>
       <div className="flex flex-wrap justify-between items-center py-2">
         <button
-          className="text-green-600 hover:text-green-500 border border-green-600 rounded-2xl text-sm px-4 py-1 w-1/5 my-4"
+          className="text-green-600 hover:text-green-500 border border-green-600 rounded-2xl text-sm px-4 py-1  my-4"
           onClick={() => {
             setOpen(true);
           }}
@@ -113,13 +115,15 @@ const EditorNav = ({ editor }) => {
           Choose an image
         </button>
         <select
-          className="bg-[#f1f1f1] border border-gray-300 rounded-lg p-1 text-sm text-black h-max"
+          className="bg-[#f1f1f1] dark:bg-[#191919] dark:border-[#3b3b3b] dark:text-[#f3f3f3] border border-gray-300 rounded-lg p-1 text-sm text-black h-max"
           ref={categoryRef}
         >
           <option value="">Choose a tag</option>
-          <option value="Software">Software</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Art">Art</option>
+          {BLOG_CATEGORIES.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </div>
       {/* Image Selection modal */}

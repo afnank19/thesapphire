@@ -5,7 +5,7 @@ import BlogCard from './BlogCard';
 // acceptable
 const BlogList = ({ pages }) => {
   return (
-    <div className="flex flex-col gap-4 bg-[#F1F1F1] p-2 rounded-lg">
+    <div className="flex flex-col gap-4 bg-[#F1F1F1] p-2 rounded-lg dark:bg-[#191919]">
       {pages.map((page) => {
         return page.map((blog) => {
           return <BlogCard key={blog.id} blogMeta={blog} />;

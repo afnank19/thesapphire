@@ -8,7 +8,6 @@ import { authInstance } from '../axios';
 export const getNews = async () => {
   const response = await authInstance.get('/external-services/news');
 
-  console.log(response.data.news);
   return response.data;
 };
 
@@ -18,6 +17,5 @@ export const getImages = async (query) => {
     `/external-services/pexels/search?query=${query}`
   );
 
-  console.log(response.data);
   return response.data;
 };

@@ -24,27 +24,22 @@ export const fetchBlogs = async ({ pageParam }) => {
     parameters.set('search', useQueryStore.getState().searchQuery);
   }
 
-  console.log(pageParam);
-  console.log('HITTING: ' + endpoint + parameters.toString());
+  // console.log(pageParam);
+  // console.log('HITTING: ' + endpoint + parameters.toString());
   const response = await authInstance.get(endpoint + parameters.toString());
 
-  console.log(response.data);
   return response.data;
 };
 
 export const fetchABlogById = async (blogId) => {
-  // console.log(blogId);
   const response = await authInstance.get(`/blogs/${blogId}`);
 
-  // console.log(response.data);
   return response.data;
 };
 
 export const postABlog = async (blog) => {
   const authorId = useAuthStore.getState().id;
-  // console.log(authorId);
   blog = { authorId: authorId, ...blog };
-  console.log(blog);
 
   const response = await authInstance.post('/blogs', blog);
 
