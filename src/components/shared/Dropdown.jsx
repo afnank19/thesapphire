@@ -36,7 +36,7 @@ const Dropdown = () => {
           </div>
           <button className="flex items-center gap-2 text-sm">
             <SignOut />
-            Sign out
+            Sign out (INACTIVE)
           </button>
         </div>
       )}

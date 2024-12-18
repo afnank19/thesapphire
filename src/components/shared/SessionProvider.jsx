@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../services/state/authStore';
 import { useQuery } from '@tanstack/react-query';
 import { getSession } from '../../services/api/auth';
+import BrandLoader from '../ui/BrandLoader';
 
 // Determine auth status here
 const SessionProvider = ({ children }) => {
@@ -32,7 +33,7 @@ const SessionProvider = ({ children }) => {
     }
   }, [isError, isSuccess]);
 
-  return isFetching ? <div>Loading</div> : children;
+  return isFetching ? <BrandLoader /> : children;
 };
 
 export default SessionProvider;
