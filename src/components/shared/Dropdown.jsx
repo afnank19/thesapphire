@@ -11,6 +11,10 @@ import { useAuthStore } from '../../services/state/authStore';
 const Dropdown = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const handleLinkClick = () => {
+    setIsExpanded(false);
+  };
+
   return (
     <div className="relative">
       <button
@@ -22,17 +26,19 @@ const Dropdown = () => {
         <UserCircle size={'1.5rem'} />
       </button>
       {isExpanded && (
-        <div className="absolute bg-[#EEE] dark:bg-[#191919] text-gray-500 rounded-lg px-4 py-1 right-0 w-52 flex flex-col gap-2 items-start mt-2 drop-shadow-md z-10 ">
-          <div className="flex flex-col">
+        <div className="absolute bg-[#EEE] dark:bg-[#191919] dark:text-gray-300 text-gray-500 rounded-lg px-4 py-1 right-0 w-52 flex flex-col gap-3 items-start mt-2 drop-shadow-md z-10 ">
+          <div className="flex flex-col gap-2">
             <Link
               className="hover:text-black dark:hover:text-white"
               to={`/profile/${useAuthStore.getState().id}`}
+              onClick={handleLinkClick}
             >
               Profile
             </Link>
             <Link
               className="hover:text-black dark:hover:text-white"
               to={'/settings'}
+              onClick={handleLinkClick}
             >
               Settings
             </Link>

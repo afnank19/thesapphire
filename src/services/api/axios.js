@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useAuthStore } from '../state/authStore';
 
 // Build a system for being in dev mode or prod mode!
-//const BASE_URL = 'http://localhost:3000/api';
-const BASE_URL = 'https://smiling-kerstin-afnan-we-2f62af17.koyeb.app/api';
+const BASE_URL = 'http://localhost:3000/api';
+// const BASE_URL = 'https://smiling-kerstin-afnan-we-2f62af17.koyeb.app/api';
 
 export const authInstance = axios.create({
   baseURL: BASE_URL,
@@ -39,12 +39,19 @@ authInstance.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
+      const rToken = localStorage.getItem('__r_tkn');
+
       const response = await refreshInstance.get('/session/token', {
-        withCredentials: true
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${rToken}`
+        }
       });
 
       const { setAccessToken } = useAuthStore.getState();
+
       setAccessToken(response.data.aTkn);
+      localStorage.setItem('__r_tkn', response.data.rTkn);
 
       originalRequest.headers.Authorization = `Bearer ${response.data.aTkn}`;
       return authInstance(originalRequest);
