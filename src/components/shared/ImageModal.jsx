@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import MasonryGrid from './MasonryGrid';
 import { getImages } from '../../services/api/services/externalSvc';
+import Loader from '../ui/Loader';
+import ErrorText from '../ui/ErrorText';
 
 const ImageModal = ({ setOpen, setImage }) => {
   // const [image, setImage] = useState('');
@@ -24,7 +26,7 @@ const ImageModal = ({ setOpen, setImage }) => {
 
   return (
     <div className="w-full h-full bg-black/20 absolute top-0 left-0 flex items-center justify-center z-10">
-      <div className="bg-gray-100 rounded-3xl p-4 m-2 max-w-2xl w-full flex flex-col gap-4 h-2/3">
+      <div className="bg-gray-100 dark:bg-[#191919] rounded-3xl p-4 m-2 max-w-2xl w-full flex flex-col gap-4 min-h-60">
         <div className="flex justify-between">
           <p className=" text-xl">Select a cover image</p>
           <button
@@ -41,14 +43,14 @@ const ImageModal = ({ setOpen, setImage }) => {
           onChange={(e) => {
             setQuery(e.target.value);
           }}
-          className="bg-[#f1f1f1] border border-gray-300 rounded-lg p-1 text-sm text-black focus:border-gray-400 outline-none"
+          className="bg-[#f1f1f1] dark:bg-[#1f1f1f] border border-gray-300 dark:border-[#3b3b3b] dark:text-white rounded-lg p-1 text-sm text-black focus:border-gray-400 outline-none"
           placeholder="Search the entirety of Pexels"
           type="text"
         ></input>
         {isFetching ? (
-          <div> Getting Images</div>
+          <Loader />
         ) : isError ? (
-          <div>An Oopsie Occured</div>
+          <ErrorText message={'A problem occured when fetching images'} />
         ) : (
           <MasonryGrid images={data} setOpen={setOpen} setImage={setImage} />
         )}

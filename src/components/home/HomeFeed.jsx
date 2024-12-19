@@ -33,6 +33,7 @@ const HomeFeed = () => {
   useEffect(() => {
     return () => {
       setActiveCtgry('Latest');
+      invalidateQueries();
     };
   }, []);
 

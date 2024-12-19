@@ -20,6 +20,7 @@ export const registerUser = async ({ name, email, password, cms, campus }) => {
     { withCredentials: true }
   );
 
+  localStorage.setItem('__r_tkn', response.data.rTkn);
   return response.data;
 };
 
