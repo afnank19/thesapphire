@@ -18,6 +18,7 @@ import ProfilePage from './pages/ProfilePage.jsx';
 import SettingsPage from './pages/SettingsPage.jsx';
 import BrandLoader from './components/ui/BrandLoader.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -57,11 +58,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/app',
-    element: (
-      <SessionProvider>
-        <SignUpPage /> {/**Landing Page goes here */}
-      </SessionProvider>
-    )
+    element: <LandingPage />
   },
   {
     path: '/signin',
