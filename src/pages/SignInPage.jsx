@@ -5,7 +5,7 @@ import SignInForm from '../components/auth/SignInForm';
 const SignInPage = () => {
   return (
     <div className="flex flex-col h-screen items-center">
-      <h1 className="text-2xl font-serif ">The Nust Sapphire</h1>
+      <h1 className="text-2xl font-news ">The Nust Sapphire</h1>
       <div className="flex-grow flex-col flex items-center justify-center w-full">
         <SignInForm />
         <p className="text-sm text-gray-700 dark:text-[#7D7D7D]">
