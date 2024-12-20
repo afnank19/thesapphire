@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -7,18 +7,22 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
-import WritingPage from './pages/WritingPage.jsx';
+// import WritingPage from './pages/WritingPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import SessionProvider from './components/shared/SessionProvider.jsx';
 import SignInPage from './pages/SignInPage.jsx';
-import AuthRedirection from './components/shared/AuthRedirection.jsx';
 import SearchPage from './pages/SearchPage';
 import BlogPage from './pages/BlogPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
-import SettingsPage from './pages/SettingsPage.jsx';
+// import SettingsPage from './pages/SettingsPage.jsx';
 import BrandLoader from './components/ui/BrandLoader.jsx';
-import NotFoundPage from './pages/NotFoundPage.jsx';
-import LandingPage from './pages/LandingPage.jsx';
+// import NotFoundPage from './pages/NotFoundPage.jsx';
+// import LandingPage from './pages/LandingPage.jsx';
+
+const WritingPage = lazy(() => import('./pages/WritingPage.jsx'));
+const SettingsPage = lazy(() => import('./pages/SettingsPage.jsx'));
+const LandingPage = lazy(() => import('./pages/LandingPage.jsx'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 
 const router = createBrowserRouter([
   {
@@ -44,21 +48,31 @@ const router = createBrowserRouter([
       },
       {
         path: '/settings',
-        element: <SettingsPage />
+        element: (
+          <Suspense fallback={<BrandLoader />}>
+            <SettingsPage />
+          </Suspense>
+        )
       }
     ]
   },
   {
     path: '/write',
     element: (
-      <SessionProvider>
-        <WritingPage />
-      </SessionProvider>
+      <Suspense fallback={<BrandLoader />}>
+        <SessionProvider>
+          <WritingPage />
+        </SessionProvider>
+      </Suspense>
     )
   },
   {
     path: '/app',
-    element: <LandingPage />
+    element: (
+      <Suspense fallback={<BrandLoader />}>
+        <LandingPage />
+      </Suspense>
+    )
   },
   {
     path: '/signin',
@@ -66,15 +80,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/signup',
-    element: (
-      <AuthRedirection>
-        <SignUpPage />
-      </AuthRedirection>
-    )
+    element: <SignUpPage />
   },
   {
     path: '*',
-    element: <NotFoundPage />
+    element: (
+      <Suspense fallback={<BrandLoader />}>
+        <NotFoundPage />
+      </Suspense>
+    )
   }
 ]);
 
