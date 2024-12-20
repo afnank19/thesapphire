@@ -9,7 +9,7 @@ const NotFoundPage = () => {
         <WarningOctagon size={'2rem'} className="text-red-700" />
         <h1 className="text-3xl font-bold">404 Not Found</h1>
       </div>
-      <p className="text-gray-600">
+      <p className="text-gray-600 dark:text-gray-400">
         Aren't you an explorer! Unfortunately there isn't a page here.
       </p>
       <Link
