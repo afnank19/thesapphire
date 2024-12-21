@@ -1,5 +1,5 @@
 import { SignOut, UserCircle } from '@phosphor-icons/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuthStore } from '../../services/state/authStore';
 
@@ -11,8 +11,19 @@ import { useAuthStore } from '../../services/state/authStore';
 const Dropdown = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const navigate = useNavigate();
+
+  const setAccessToken = useAuthStore((state) => state.setAccessToken);
+
   const handleLinkClick = () => {
     setIsExpanded(false);
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('__r_tkn');
+
+    setAccessToken('');
+    navigate('/app', { replace: true });
   };
 
   return (
@@ -43,9 +54,12 @@ const Dropdown = () => {
               Settings
             </Link>
           </div>
-          <button className="flex items-center gap-2 text-sm">
+          <button
+            className="flex items-center gap-2 text-sm hover:text-black dark:hover:text-white"
+            onClick={handleSignOut}
+          >
             <SignOut />
-            Sign out (INACTIVE)
+            Sign out
           </button>
         </div>
       )}
