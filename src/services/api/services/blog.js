@@ -45,3 +45,20 @@ export const postABlog = async (blog) => {
 
   return response;
 };
+
+// This needs to be paginated
+export const getBlogByAUser = async ({ pageParam }) => {
+  console.log(pageParam);
+
+  let endpoint = `/users/${pageParam.userId}/blogs`;
+
+  if (pageParam.lastDocId != undefined) {
+    endpoint += `?lastDocId=${pageParam.lastDocId}`;
+  }
+
+  console.log('HITTING ' + endpoint);
+  const response = await authInstance.get(endpoint);
+
+  console.log(response.data);
+  return response.data;
+};
