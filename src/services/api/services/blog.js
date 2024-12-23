@@ -56,9 +56,7 @@ export const getBlogByAUser = async ({ pageParam }) => {
     endpoint += `?lastDocId=${pageParam.lastDocId}`;
   }
 
-  console.log('HITTING ' + endpoint);
   const response = await authInstance.get(endpoint);
 
-  console.log(response.data);
   return response.data;
 };
