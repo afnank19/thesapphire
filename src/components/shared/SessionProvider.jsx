@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../services/state/authStore';
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +23,7 @@ const SessionProvider = ({ children }) => {
 
   useEffect(() => {
     if (isError && useAuthStore.getState().accessToken === '') {
-      navigate('/signin', { replace: true });
+      navigate('/app', { replace: true });
     }
 
     if (isSuccess) {

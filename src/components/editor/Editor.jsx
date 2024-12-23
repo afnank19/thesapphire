@@ -22,7 +22,7 @@ const Editor = () => {
         editorProps={{
           attributes: {
             class:
-              'prose prose-xl dark:prose-invert font-crimson max-w-none  m-1 focus:outline-none'
+              'prose prose-xl dark:prose-invert font-news max-w-none  m-1 focus:outline-none'
           }
         }}
       ></EditorProvider>
