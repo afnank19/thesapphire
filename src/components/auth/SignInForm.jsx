@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../services/state/authStore';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../../services/api/auth';
@@ -12,6 +12,8 @@ const SignInForm = () => {
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
   const setUserId = useAuthStore((state) => state.setUserId);
 
+  const { accessToken, id } = useAuthStore();
+
   const navigate = useNavigate();
 
   const mutation = useMutation({
@@ -20,6 +22,7 @@ const SignInForm = () => {
       // console.log(data);
       setAccessToken(data.aTkn);
       setUserId(data.id);
+
       navigate('/', { replace: true });
     },
     onError: (error) => {

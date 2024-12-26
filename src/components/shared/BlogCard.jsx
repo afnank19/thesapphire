@@ -14,10 +14,13 @@ const BlogCard = ({ blogMeta }) => {
       >
         {blogMeta?.author}
       </Link>
-      <Link className="font-bold text-xl" to={`/blog/${blogMeta?.blogRef}`}>
+      <Link
+        className="font-semibold break-words text-xl"
+        to={`/blog/${blogMeta?.blogRef}`}
+      >
         {blogMeta?.title}
       </Link>
-      <p className="text-sm text-[#626262] dark:text-[#7D7D7D]">
+      <p className="text-sm break-words text-[#626262] dark:text-[#7D7D7D]">
         {blogMeta?.teaser}
       </p>
       <div className="text-sm text-gray-400 my-2 flex justify-between dark:text-[#7D7D7D]">
