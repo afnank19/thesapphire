@@ -32,7 +32,7 @@ const BlogPage = () => {
           <>
             <BlogMeta blogMeta={data} />
             <BlogContent content={data.content} />
-            {/* <BlogFooter /> */}
+            <BlogFooter />
           </>
         )}
       </div>
