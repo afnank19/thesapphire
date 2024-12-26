@@ -48,8 +48,6 @@ export const postABlog = async (blog) => {
 
 // This needs to be paginated
 export const getBlogByAUser = async ({ pageParam }) => {
-  console.log(pageParam);
-
   let endpoint = `/users/${pageParam.userId}/blogs`;
 
   if (pageParam.lastDocId != undefined) {
@@ -59,4 +57,34 @@ export const getBlogByAUser = async ({ pageParam }) => {
   const response = await authInstance.get(endpoint);
 
   return response.data;
+};
+
+export const getComments = async ({ pageParam }) => {
+  console.log(pageParam);
+
+  let endpoint = `/blogs/${pageParam.blogContentId}/comments`;
+
+  if (pageParam.lastDocId != undefined) {
+    endpoint += `?lastDocId=${pageParam.lastDocId}`;
+  }
+
+  console.log('HITTING ' + endpoint);
+  const response = await authInstance.get(endpoint);
+
+  console.log(response.data);
+  return response.data;
+};
+
+export const postComment = async (commentObj) => {
+  const authorId = useAuthStore.getState().id;
+  const response = await authInstance.post(
+    `/blogs/${commentObj.blogContentId}/comments`,
+    {
+      displayDate: commentObj.displayDate,
+      comment: commentObj.comment,
+      authorId: authorId
+    }
+  );
+
+  return response;
 };
