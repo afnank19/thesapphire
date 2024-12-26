@@ -20,7 +20,7 @@ const Navbar = () => {
         to={'/'}
         className="font-news text-2xl hover:text-blue-800 transition-colors dark:hover:text-blue-300"
       >
-        The Nust Sapphire
+        The Sapphire <span className="text-xs">Beta</span>
       </Link>
       <div className="flex gap-4 items-center">
         {/* The below code of the search bar should move to it's own component */}
