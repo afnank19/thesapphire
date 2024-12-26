@@ -2,6 +2,7 @@ import { SignOut, UserCircle } from '@phosphor-icons/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuthStore } from '../../services/state/authStore';
+import { useQueryClient } from '@tanstack/react-query';
 
 // NOTE: This component is put in the shared folder
 // Although this is not reuseable, it could be made reuseable
@@ -14,6 +15,9 @@ const Dropdown = () => {
   const navigate = useNavigate();
 
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
+  const setUserId = useAuthStore((state) => state.setUserId);
+  const { id } = useAuthStore();
+  const queryClient = useQueryClient();
 
   const handleLinkClick = () => {
     setIsExpanded(false);
@@ -23,6 +27,9 @@ const Dropdown = () => {
     localStorage.removeItem('__r_tkn');
 
     setAccessToken('');
+    setUserId('');
+    queryClient.clear();
+
     navigate('/app', { replace: true });
   };
 
@@ -41,7 +48,7 @@ const Dropdown = () => {
           <div className="flex flex-col gap-2">
             <Link
               className="hover:text-black dark:hover:text-white"
-              to={`/profile/${useAuthStore.getState().id}`}
+              to={`/profile/${id}`}
               onClick={handleLinkClick}
             >
               Profile

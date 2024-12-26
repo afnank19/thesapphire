@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ErrorMessage from '../ui/ErrorMessage';
 import ErrorToast from '../ui/ErrorToast';
+import { CAMPUSES } from '../../utils/constants';
 // But this decision is to be made POST state handling
 const SignUpForm = () => {
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
@@ -89,15 +90,13 @@ const SignUpForm = () => {
         >
           {/* Should map over a list */}
           <option value=""></option>
-          <option value="Military College of Signals">
-            Military College of Signals
-          </option>
-          <option value="School of Electrical Engineering and Computer Science">
-            School of Electrical Engineering and Computer Science
-          </option>
-          <option value="College of Aeronautical Engineering">
-            College of Aeronautical Engineering
-          </option>
+          {CAMPUSES.map((campus, i) => {
+            return (
+              <option key={i} value={campus}>
+                {campus}
+              </option>
+            );
+          })}
         </select>
         {errors.campus && <ErrorMessage errorMessage={errors.campus.message} />}
         <button
