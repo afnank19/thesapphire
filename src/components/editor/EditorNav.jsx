@@ -8,7 +8,7 @@ import {
 import { useMutation } from '@tanstack/react-query';
 import { postABlog } from '../../services/api/services/blog';
 import { toast, Toaster } from 'sonner';
-import { BLOG_CATEGORIES } from '../../utils/constants';
+import { BLOG_CATEGORIES, DOMPurifyConfig } from '../../utils/constants';
 import DOMPurify from 'dompurify';
 import { useNavigate } from 'react-router-dom';
 
@@ -61,7 +61,7 @@ const EditorNav = ({ editor }) => {
       return;
     }
 
-    const content = DOMPurify.sanitize(editor.getHTML());
+    const content = DOMPurify.sanitize(editor.getHTML(), DOMPurifyConfig);
     // console.log(new Date(Date.now()).toDateString());
     const blog = {
       timeToRead: timeToRead,
