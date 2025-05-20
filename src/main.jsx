@@ -38,10 +38,10 @@ const router = createBrowserRouter([
         path: '/search',
         element: <SearchPage />
       },
-      {
-        path: '/blog/:id',
-        element: <BlogPage />
-      },
+      // {
+      //   path: '/blog/:id',
+      //   element: <BlogPage />
+      // },
       {
         path: '/profile/:id',
         element: <ProfilePage />
@@ -55,6 +55,10 @@ const router = createBrowserRouter([
         )
       }
     ]
+  },
+  {
+    path: '/blog/:id',
+    element: <BlogPage />
   },
   {
     path: '/write',
