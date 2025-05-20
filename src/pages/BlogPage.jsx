@@ -8,6 +8,8 @@ import Loader from '../components/ui/Loader';
 import ErrorText from '../components/ui/ErrorText';
 import { DEFAULT_ERR_MESSAGE } from '../utils/constants';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/shared/Navbar';
+import { useEffect, useState } from 'react';
 
 // TODO: Fetch blog data as custom hook from the API
 // Send the data as props to respective components
@@ -21,16 +23,29 @@ const BlogPage = () => {
     refetchOnWindowFocus: false
   });
 
+  const [rTkn, setRTkn] = useState("")
+
+  useEffect(() => {
+    const token = localStorage.getItem("__r_tkn")
+    if (token) {
+      setRTkn(token);
+    }
+    // console.log(localStorage.getItem("__r_tkn"));
+  }, [])
+
   return (
     <>
-    <div className="flex items-center justify-between border-b dark:dark:border-[#3b3b3b]  py-1 px-3">
-      <Link
-        to={'/app'}
-        className="font-news w-full text-center text-2xl hover:text-blue-800 transition-colors dark:hover:text-blue-300"
-      >
-        The Sapphire <span className="text-xs">Beta</span>
-      </Link>
-    </div>
+      { rTkn !== "" ? 
+        <Navbar />
+        :<div className="flex items-center justify-between border-b dark:dark:border-[#3b3b3b]  py-1 px-3">
+          <Link
+            to={'/app'}
+            className="font-news w-full text-center text-2xl hover:text-blue-800 transition-colors dark:hover:text-blue-300"
+          >
+            The Sapphire <span className="text-xs">Beta</span>
+          </Link>
+        </div>
+      }
       <div className="flex flex-col items-center w-full">
         {/* <Navbar /> to be made, but it doesn't go here*/}
         <div className="max-w-3xl w-full p-2">
