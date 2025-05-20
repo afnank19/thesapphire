@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { toast, Toaster } from 'sonner';
 import { ChatsCircle } from '@phosphor-icons/react';
 
-const BlogFooter = () => {
+const BlogFooter = ( {loggedIn}) => {
   const [commentTxt, setCommentTxt] = useState('');
 
   const { id } = useParams();
@@ -65,35 +65,39 @@ const BlogFooter = () => {
       <p className="text-sm font-medium text-[#7d7d7d] mb-6">
         Please be respectful in the comments!
       </p>
-      <div className="flex gap-2 items-center">
-        <input
-          maxLength={160}
-          placeholder="What are your thoughts?"
-          value={commentTxt}
-          onChange={(e) => {
-            setCommentTxt(e.target.value);
-          }}
-          className="w-full bg-[#EAEAEA] 
-                     border 
-                     border-gray-300 
-                     dark:bg-[#191919] 
-                     dark:border-[#3b3b3b] 
-                     dark:text-[#F3f3f3] 
-                     rounded-full
-                     p-1
-                     px-3
-                     mb-2 
-                     text-black 
-                     focus:border-gray-400 
-                     outline-none"
-        ></input>
-        <button
-          className="bg-green-600 hover:bg-green-500 text-white rounded-2xl text-sm h-max px-4 py-1 mb-2"
-          onClick={handlePostComment}
-        >
-          {mutation.isPending ? 'Posting' : 'Post'}
-        </button>
-      </div>
+      { loggedIn ? 
+        <div className="flex gap-2 items-center">
+          <input
+            maxLength={160}
+            placeholder="What are your thoughts?"
+            value={commentTxt}
+            onChange={(e) => {
+              setCommentTxt(e.target.value);
+            }}
+            className="w-full bg-[#EAEAEA] 
+                      border 
+                      border-gray-300 
+                      dark:bg-[#191919] 
+                      dark:border-[#3b3b3b] 
+                      dark:text-[#F3f3f3] 
+                      rounded-full
+                      p-1
+                      px-3
+                      mb-2 
+                      text-black 
+                      focus:border-gray-400 
+                      outline-none"
+          ></input>
+          <button
+            className="bg-green-600 hover:bg-green-500 text-white rounded-2xl text-sm h-max px-4 py-1 mb-2"
+            onClick={handlePostComment}
+          >
+            {mutation.isPending ? 'Posting' : 'Post'}
+          </button>
+        </div>
+        :
+        null
+      }
       {isPending ? (
         <Loader />
       ) : isError ? (

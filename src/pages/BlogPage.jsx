@@ -23,21 +23,21 @@ const BlogPage = () => {
     refetchOnWindowFocus: false
   });
 
-  const [rTkn, setRTkn] = useState("")
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("__r_tkn")
     if (token) {
-      setRTkn(token);
+      setLoggedIn(true);
     }
-    // console.log(localStorage.getItem("__r_tkn"));
   }, [])
 
   return (
     <>
-      { rTkn !== "" ? 
+      {loggedIn === true ? 
         <Navbar />
-        :<div className="flex items-center justify-between border-b dark:dark:border-[#3b3b3b]  py-1 px-3">
+        :
+        <div className="flex items-center justify-between border-b dark:dark:border-[#3b3b3b]  py-1 px-3">
           <Link
             to={'/app'}
             className="font-news w-full text-center text-2xl hover:text-blue-800 transition-colors dark:hover:text-blue-300"
@@ -57,7 +57,7 @@ const BlogPage = () => {
             <>
               <BlogMeta blogMeta={data} />
               <BlogContent content={data.content} />
-              <BlogFooter />
+              <BlogFooter loggedIn={loggedIn} />
             </>
           )}
         </div>
